@@ -10,11 +10,9 @@ FROM eclipse-temurin:24-jre
 WORKDIR /app
 COPY --from=builder /build/target/NetfixClone-0.0.1-SNAPSHOT.jar app.jar
 
-# Set PORT environment variable for Cloud Run
+# Cloud Run port
 ENV PORT=8080
-
-# Optional: expose port (good practice)
 EXPOSE 8080
 
-# Start Spring Boot with server.port set from environment variable
-ENTRYPOINT ["java","-jar","app.jar","--server.port=${PORT}"]
+# Start Spring Boot, binding to 0.0.0.0
+ENTRYPOINT ["java","-jar","app.jar","--server.port=${PORT}","--server.address=0.0.0.0"]
