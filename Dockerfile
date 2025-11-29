@@ -15,4 +15,4 @@ ENV PORT=8080
 EXPOSE 8080
 
 # Start Spring Boot, binding to 0.0.0.0
-ENTRYPOINT ["java","-jar","app.jar","--server.port=${PORT}","--server.address=0.0.0.0"]
+ENTRYPOINT ["java","-jar","app.jar","--server.port=8080","--server.address=0.0.0.0"]
